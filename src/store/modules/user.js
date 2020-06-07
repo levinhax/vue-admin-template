@@ -1,14 +1,18 @@
-import { getToken, setToken } from '@/utils/auth'
+import { getToken, setToken, getUserInfo, setUserInfo } from '@/utils/auth'
 
 const state = {
   token: getToken() || '',
-  userInfo: {}
+  userInfo: getUserInfo() || {}
 }
 
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
     setToken(token)
+  },
+  SET_USERINFO: (state, userInfo) => {
+    state.userInfo = userInfo
+    setUserInfo(userInfo)
   }
 }
 
@@ -18,6 +22,9 @@ const actions = {
   },
   resetToken({ commit }) {
     commit('SET_TOKEN', '')
+  },
+  updateUserInfo({ commit }, userInfo) {
+    commit('SET_USERINFO', userInfo)
   }
 }
 

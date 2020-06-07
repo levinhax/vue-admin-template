@@ -15,3 +15,11 @@ export function removeToken() {
   localStorage.removeItem('token')
   //   Cookies.remove(TokenKey);
 }
+
+export function getUserInfo() {
+  return JSON.parse(localStorage.getItem('userInfo'))
+}
+
+export function setUserInfo(userInfo) {
+  return localStorage.setItem('userInfo', JSON.stringify(userInfo))
+}
