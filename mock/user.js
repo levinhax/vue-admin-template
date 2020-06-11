@@ -1,3 +1,6 @@
+import dashboardRouter from './routeModules/dashboardRouter'
+import blogRouter from './routeModules/blogRouter'
+
 const tokens = {
   admin: {
     token: 'admin-token',
@@ -69,6 +72,28 @@ export default [
       return {
         code: 200,
         data: info
+      }
+    }
+  },
+  // permission menu
+  {
+    url: '/api/user/getRouter',
+    type: 'post',
+    response: config => {
+      if (config.body.userRole === 'admin-token') {
+        return {
+          code: 200,
+          data: {
+            router: [dashboardRouter, blogRouter]
+          }
+        }
+      } else if (config.body.userRole === 'user-token') {
+        return {
+          code: 200,
+          data: {
+            router: [dashboardRouter]
+          }
+        }
       }
     }
   }

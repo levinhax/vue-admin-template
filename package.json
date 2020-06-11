@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "build:prod": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
     "format": "prettier --write \"src/**/*.js\" \"src/**/*.vue\"",
     "lint": "vue-cli-service lint"
   },
@@ -47,6 +48,7 @@
     "prettier": "^1.19.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "svg-sprite-loader": "^5.0.0",
     "vue-template-compiler": "^2.6.11"
   }
 }

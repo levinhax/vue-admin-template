@@ -35,7 +35,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { login, getUserInfo } from '@/api/user'
+import { login } from '@/api/user'
 
 export default {
   name: 'Login',
@@ -67,8 +67,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      updateToken: 'user/updateToken',
-      updateUserInfo: 'user/updateUserInfo'
+      updateToken: 'user/updateToken'
     }),
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {

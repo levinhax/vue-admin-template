@@ -1,4 +1,7 @@
-@import './element-variables.scss';
+@import "./element-variables.scss";
+@import "./variables.scss";
+@import "./transition.scss";
+@import "./layout.scss";
 
 body {
   height: 100%;
@@ -93,8 +96,9 @@ div:focus {
   }
 }
 
-//main-container全局样式
+// main-container全局样式
 .app-container {
+  box-sizing: border-box;
   padding: 20px;
 }
 
@@ -103,5 +107,5 @@ div:focus {
 }
 
 .text-center {
-  text-align: center
+  text-align: center;
 }

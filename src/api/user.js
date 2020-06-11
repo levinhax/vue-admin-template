@@ -17,3 +17,12 @@ export function getAccountByToken(params) {
     params
   })
 }
+
+// 获取路由信息
+export function getRouter(data) {
+  return request({
+    url: '/api/user/getRouter',
+    method: 'post',
+    data
+  })
+}

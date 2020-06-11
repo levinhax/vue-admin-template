@@ -67,5 +67,22 @@ module.exports = {
     config.when(process.env.NODE_ENV === 'development', config =>
       config.devtool('cheap-source-map')
     )
+
+    // svg-sprite-loader将多个svg图标合并. 使用时只需根据合并的symbol的id
+    config.module
+      .rule('svg')
+      .exclude.add(resolvePath('src/icons'))
+      .end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolvePath('src/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]'
+      })
+      .end()
   }
 }
