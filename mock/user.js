@@ -96,5 +96,16 @@ export default [
         }
       }
     }
+  },
+  // user logout
+  {
+    url: '/api/user/logout',
+    type: 'post',
+    response: () => {
+      return {
+        code: 200,
+        data: 'logout success'
+      }
+    }
   }
 ]

@@ -1,26 +1,59 @@
 # vue-admin-template
 
-## Project setup
+[vue-element-admin](https://github.com/levinhax/vue-admin-template) 是一个后台前端解决方案，它基于 vue 和 element-ui实现。
+
+简单后台基础模板 v1.0
 ```
-npm install
+git checkout v1.0
 ```
 
-### Compiles and hot-reloads for development
+## 开发
+
 ```
+# 克隆项目
+git clone https://github.com/levinhax/vue-admin-template.git
+
+# 进入项目目录
+cd vue-element-admin
+
+# 安装依赖
+npm install
+
+# 启动服务
 npm run serve
 ```
 
-### Compiles and minifies for production
+## 发布
+
 ```
-npm run build
+# 构建测试环境
+npm run build:stage
+
+# 构建生产环境
+npm run build:prod
 ```
 
-### Lints and fixes files
+## 其它
+
 ```
+# 代码格式检查
 npm run lint
+
+# 代码风格格式检查并自动修复
+npm run format
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 已完成功能
 
-项目搭建借鉴： https://github.com/PanJiaChen/vue-element-admin
+- 登录 / 登出
+- 多环境发布 dev / stage / production
+- git commitlint
+- mock server
+- 错误页面
+    - 403
+    - 404
+- 动态权限路由
+
+## 最后
+
+项目搭建借鉴：花裤衩大佬的vue-element-admin - https://github.com/PanJiaChen/vue-element-admin

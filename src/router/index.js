@@ -26,7 +26,7 @@ export const StaticRouterMap = [
   //   path: '/',
   //   component: Layout,
   //   redirect: '/dashboard',
-  //   name: 'Layout',
+  //   name: 'App',
   //   meta: { title: '主页', icon: 'el-icon-s-home' },
   //   children: [
   //     {

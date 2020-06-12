@@ -1,7 +1,7 @@
 const dashboardRouter = {
   id: '0100',
   url: '/',
-  name: 'layout',
+  name: 'App',
   component: 'layout',
   description: null,
   parentId: null,

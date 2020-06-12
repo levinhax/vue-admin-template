@@ -1,9 +1,22 @@
 <template>
   <div class="nav-bar">
+    <hamburger
+      id="hamburger-container"
+      :is-active="sidebar.opened"
+      class="hamburger-container"
+      @toggleClick="toggleSideBar"
+    />
+
+    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
+
     <div class="right-menu">
+      <!-- <template v-if="device !== 'mobile'">
+        search screenfull
+      </template> -->
+
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          {{ userName }}
+          {{ userInfo.name }}
           <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -23,7 +36,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import Hamburger from '@/components/Hamburger'
+import Breadcrumb from '@/components/Breadcrumb'
 
 export default {
   name: 'NavBar',
@@ -33,11 +48,25 @@ export default {
     }
   },
   computed: {
-    // ...mapGetters(['userName', 'avatar'])
+    ...mapGetters(['userInfo', 'sidebar', 'device'])
   },
+  components: {
+    Hamburger,
+    Breadcrumb
+  },
+  created() {},
   methods: {
-    handleLogOut() {
-      console.log('登出')
+    ...mapActions({
+      dispatchToggleSideBar: 'app/toggleSideBar',
+      logout: 'user/logout'
+    }),
+    toggleSideBar() {
+      // this.$store.dispatch('app/toggleSideBar')
+      this.dispatchToggleSideBar()
+    },
+    async handleLogOut() {
+      await this.logout()
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }
 }
@@ -50,6 +79,23 @@ export default {
   position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
+  .hamburger-container {
+    line-height: 46px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.025);
+    }
+  }
+
+  .breadcrumb-container {
+    float: left;
+  }
 
   .right-menu {
     float: right;
@@ -66,16 +112,15 @@ export default {
       .avatar-wrapper {
         margin-top: 5px;
         position: relative;
+        cursor: pointer;
 
         .user-avatar {
-          cursor: pointer;
           width: 40px;
           height: 40px;
           border-radius: 10px;
         }
 
         .el-icon-caret-bottom {
-          cursor: pointer;
           position: absolute;
           right: -20px;
           top: 20px;

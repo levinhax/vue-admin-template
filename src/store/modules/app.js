@@ -1,3 +1,5 @@
+import { TOGGLE_SIDEBAR, CLOSE_SIDEBAR, TOGGLE_DEVICE } from '../mutation-types'
+
 const state = {
   sidebar: {
     opened: sessionStorage.getItem('sidebarStatus')
@@ -9,7 +11,7 @@ const state = {
 }
 
 const mutations = {
-  toggleSideBar: state => {
+  TOGGLE_SIDEBAR: state => {
     state.sidebar.opened = !state.sidebar.opened
     state.sidebar.withoutAnimation = false
     if (state.sidebar.opened) {
@@ -18,25 +20,25 @@ const mutations = {
       sessionStorage.setItem('sidebarStatus', 0)
     }
   },
-  closeSidebar: (state, withoutAnimation) => {
+  CLOSE_SIDEBAR: (state, withoutAnimation) => {
     sessionStorage.setItem('sidebarStatus', 0)
     state.sidebar.opened = false
     state.sidebar.withoutAnimation = withoutAnimation
   },
-  toggleDevice: (state, device) => {
+  TOGGLE_DEVICE: (state, device) => {
     state.device = device
   }
 }
 
 const actions = {
   toggleSideBar({ commit }) {
-    commit('toggleSideBar')
+    commit('TOGGLE_SIDEBAR')
   },
   closeSideBar({ commit }, { withoutAnimation }) {
-    commit('closeSideBar', withoutAnimation)
+    commit('CLOSE_SIDEBAR', withoutAnimation)
   },
   toggleDevice({ commit }, device) {
-    commit('toggleDevice', device)
+    commit('TOGGLE_DEVICE', device)
   }
 }
 

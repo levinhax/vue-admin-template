@@ -26,3 +26,11 @@ export function getRouter(data) {
     data
   })
 }
+
+// 用户登出
+export function logout() {
+  return request({
+    url: '/api/user/logout',
+    method: 'post'
+  })
+}

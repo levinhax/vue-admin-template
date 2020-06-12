@@ -53,11 +53,11 @@ function getAsyncRouter(to, next) {
     })
     .then(asyncRouter => {
       // 后置添加404页面,防止刷新404
-      //   asyncRouter.push({
-      //     path: '*',
-      //     redirect: '/404',
-      //     hidden: true
-      //   })
+      asyncRouter.push({
+        path: '*',
+        redirect: '/404',
+        hidden: true
+      })
       router.addRoutes(asyncRouter) // vue-router提供的addRouter方法进行路由拼接
       console.log('---------- 解析后的动态路由 ---------')
       console.log(asyncRouter)
@@ -65,7 +65,11 @@ function getAsyncRouter(to, next) {
       store.dispatch('permission/generateRoutes', asyncRouter) // 存储到vuex
       store.dispatch('user/getInfo')
       store.commit('user/SET_INIT', true)
-      next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
+
+      // hack method to ensure that addRoutes is complete
+      // set the replace: true, so the navigation will not leave a history record
+      // https://router.vuejs.org/zh-cn/advanced/navigation-guards.html
+      next({ ...to, replace: true })
     })
     .catch(e => {
       console.log('async router error: ', e)
