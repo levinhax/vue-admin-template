@@ -5,6 +5,7 @@ import { resetRouter } from '@/router'
 const state = {
   token: getToken() || '',
   userInfo: getUserInfo() || {}, // 用户信息，userName: ''，roles: []
+  roles: [],
   init: false // 是否完成初始化 // 默认未完成
 }
 
@@ -16,6 +17,9 @@ const mutations = {
   SET_USERINFO: (state, userInfo) => {
     state.userInfo = userInfo
     setUserInfo(userInfo)
+  },
+  SET_ROLES: (state, roles) => {
+    state.roles = roles
   },
   SET_INIT: (state, status) => {
     state.init = status
@@ -38,12 +42,12 @@ const actions = {
       getAccountByToken(params)
         .then(response => {
           const data = response.data
-          // if (data.roles && data.roles.length > 0) {
-          //   // 验证返回的roles是否是一个非空数组
-          //   commit('SET_ROLES', data.roles)
-          // } else {
-          //   reject('getInfo: roles must be a non-null array !')
-          // }
+          if (data.roles && data.roles.length > 0) {
+            // 验证返回的roles是否是一个非空数组
+            commit('SET_ROLES', data.roles)
+          } else {
+            reject('getInfo: roles must be a non-null array !')
+          }
           commit('SET_USERINFO', data)
           resolve(response)
         })
@@ -51,6 +55,9 @@ const actions = {
           reject(error)
         })
     })
+  },
+  setInit({ commit }, status) {
+    commit('SET_INIT', status)
   },
   // 登出
   // user logout

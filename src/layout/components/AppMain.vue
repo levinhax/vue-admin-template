@@ -18,9 +18,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/styles/variables.scss';
+
 .app-main {
   /* 50 = navbar */
-  width: 100%;
+  /* width: 100%; */
+  width: calc(100% - #{$sideBarWidth});
   min-height: calc(100vh - 50px);
   box-sizing: border-box;
   padding: 20px 16px;

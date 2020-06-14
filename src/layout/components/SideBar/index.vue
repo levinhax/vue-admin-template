@@ -45,13 +45,7 @@ export default {
         return meta.activeMenu
       }
       // menu高亮
-      if (path.split('/').length > 2) {
-        // 包含嵌套子路由
-        const transPath = '/' + path.split('/')[1] + '/list'
-        return transPath
-      } else {
-        return path
-      }
+      return path
     },
     showLogo() {
       return this.$store.state.settings.sidebarLogo
@@ -64,8 +58,8 @@ export default {
     }
   },
   created() {
-    console.log('====== routes =======')
-    console.log(this.routes)
+    // console.log('====== routes =======')
+    // console.log(this.routes)
   }
 }
 </script>

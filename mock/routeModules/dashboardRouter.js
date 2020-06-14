@@ -4,11 +4,11 @@ const dashboardRouter = {
   name: 'App',
   component: 'layout',
   description: null,
+  title: '首页',
+  icon: 'dashboard',
   parentId: null,
   parentName: null,
   redirect: '/dashboard',
-  title: '首页',
-  icon: 'dashboard',
   children: [
     {
       id: '0101',
@@ -16,10 +16,11 @@ const dashboardRouter = {
       name: 'Dashboard',
       component: 'Dashboard/index',
       description: null,
-      parentId: '0100',
-      parentName: 'Dashboard',
       title: '首页',
       icon: 'dashboard',
+      parentId: '0100',
+      parentName: 'Dashboard',
+      redirect: '',
       hidden: false,
       children: null
     }

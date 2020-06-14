@@ -4,11 +4,11 @@ const blogRouter = {
   name: 'Blog',
   component: 'layout',
   description: null,
+  title: 'Blog',
+  icon: 'dashboard',
   parentId: null,
   parentName: null,
   redirect: '/blog/index',
-  title: 'Blog',
-  icon: 'dashboard',
   children: [
     {
       id: '0201',
@@ -16,10 +16,11 @@ const blogRouter = {
       name: 'BlogList',
       component: 'Blog/list',
       description: null,
-      parentId: '0200',
-      parentName: 'Blog',
       title: 'BlogList',
       icon: 'dashboard',
+      parentId: '0200',
+      parentName: 'Blog',
+      redirect: '',
       hidden: false,
       children: null
     },
@@ -29,10 +30,11 @@ const blogRouter = {
       name: 'BlogCreate',
       component: 'Blog/create',
       description: null,
-      parentId: '0200',
-      parentName: 'Blog',
       title: 'BlogCreate',
       icon: '',
+      parentId: '0200',
+      parentName: 'Blog',
+      redirect: '',
       hidden: false,
       children: null
     }

@@ -18,6 +18,10 @@ Object.keys(filters).forEach(key => {
 import '@/icons' // icon
 import '@/permission' // permission control
 
+// directive 自定义指令
+import { directive } from './directive'
+directive()
+
 Vue.config.productionTip = false
 
 new Vue({

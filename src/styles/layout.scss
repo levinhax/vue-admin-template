@@ -1,8 +1,12 @@
+@import '~@/styles/variables.scss';
+
 #app {
   .main-container {
+    width: calc(100% - #{$sideBarWidth});
     min-height: 100%;
     transition: margin-left 0.28s;
     margin-left: $sideBarWidth;
+    box-sizing: border-box;
     position: relative;
   }
 
