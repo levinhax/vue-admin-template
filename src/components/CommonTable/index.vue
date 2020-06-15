@@ -1,5 +1,6 @@
 <template>
   <el-table
+    ref="multipleTable"
     :data="tableData"
     stripe
     fit
@@ -10,21 +11,39 @@
     :cell-style="cellStyle"
     :border="bordered"
     :show-header="showHeader"
+    @selection-change="handleSelectionChange"
   >
+    <!-- 多选 -->
+    <el-table-column v-if="mutipleSelect" type="selection" width="55"> </el-table-column>
     <el-table-column
-      v-for="item in tableLabel"
-      :key="item.prop"
-      :prop="item.prop"
-      :label="item.label"
-      :width="item.width"
+      v-for="(column, index) in tableLabel"
+      :key="column.prop"
+      :prop="column.prop"
+      :label="column.label"
+      :width="column.width"
       show-overflow-tooltip
     >
-      <!-- <template slot-scope="scope">{{ scope.row[item.prop] }}</template> -->
+      <!-- <template slot-scope="scope">{{ scope.row[column.prop] }}</template> -->
       <template slot-scope="scope">
-        <span v-if="item.style" :style="item.style">
-          {{ scope.row[item.prop] }}
+        <!-- <span v-if="item.style" :style="column.style">
+          {{ scope.row[column.prop] }}
         </span>
-        <span v-else>{{ scope.row[item.prop] }}</span>
+        <span v-else>{{ scope.row[column.prop] }}</span> -->
+        <template v-if="!column.render">
+          <!-- formatter 用来格式化内容 Function(row, column, cellValue, index) -->
+          <template v-if="column.formatter">
+            <span v-html="column.formatter(scope.row, column)"></span>
+          </template>
+          <span v-else>{{ scope.row[column.prop] }}</span>
+        </template>
+        <template v-else>
+          <expand-dom
+            :column="column"
+            :row="scope.row"
+            :render="column.render"
+            :index="index"
+          ></expand-dom>
+        </template>
       </template>
     </el-table-column>
     <slot></slot>
@@ -45,6 +64,12 @@ export default {
       type: Array,
       default: function() {
         return []
+      }
+    },
+    mutipleSelect: {
+      type: Boolean,
+      default: function() {
+        return true
       }
     },
     bordered: {
@@ -85,8 +110,36 @@ export default {
       //   color: 'rgba(0, 0, 0, 0.85)',
       //   textAlign: 'center'
       // }
+      currentRow: null
     }
   },
-  methods: {}
+  components: {
+    expandDom: {
+      functional: true,
+      props: {
+        row: Object,
+        render: Function,
+        index: Number,
+        column: {
+          type: Object,
+          default: null
+        }
+      },
+      render: (h, ctx) => {
+        const params = {
+          row: ctx.props.row,
+          index: ctx.props.index
+        }
+        if (ctx.props.column) params.column = ctx.props.column
+        return ctx.props.render(h, params)
+      }
+    }
+  },
+  methods: {
+    handleSelectionChange(val) {
+      this.currentRow = val
+      this.$emit('handleSelectionChange', val)
+    }
+  }
 }
 </script>

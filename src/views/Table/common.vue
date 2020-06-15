@@ -31,6 +31,7 @@
 import { commonTableList } from '@/api/table'
 import CommonTable from '@/components/CommonTable'
 import Pagination from '@/components/Pagination'
+import { dateFormatString } from '@/utils'
 
 export default {
   name: 'CommonTablePage',
@@ -44,7 +45,10 @@ export default {
         {
           prop: 'title',
           label: '标题',
-          width: '240px'
+          width: '240px',
+          formatter: (row, column, cellValue) => {
+            return `<span style="cursor: pointer;color: #1890ff;">${row.title}</span>`
+          }
         },
         {
           prop: 'author',
@@ -57,19 +61,48 @@ export default {
         },
         {
           prop: 'createTime',
-          label: '创建时间'
+          label: '创建时间',
+          formatter: (row, column, cellValue) => {
+            return dateFormatString(row.createTime, 1)
+          }
         },
         {
           prop: 'status',
           label: '状态',
+          render: (h, params) => {
+            return h(
+              'el-tag',
+              {
+                props: {
+                  type:
+                    params.row.status === 'published'
+                      ? 'success'
+                      : params.row.status === 'published'
+                      ? ''
+                      : 'info'
+                } // 组件的props
+              },
+              params.row.status === 'published'
+                ? '已发布'
+                : params.row.status === 'publishing'
+                ? '审核中'
+                : '草稿'
+            )
+          }
+        },
+        {
+          prop: 'type',
+          label: '类型',
+          width: '90px',
           style: {
-            color: '#1890FF',
+            color: '#1890ff',
             cursor: 'pointer'
           }
         },
         {
           prop: 'pageViews',
-          label: '浏览量'
+          label: '浏览量',
+          width: '90px'
         }
       ],
       commonTableData: []

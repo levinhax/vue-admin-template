@@ -15,7 +15,7 @@ for (let i = 0; i < count; i++) {
       foreCast: '@float(0, 100, 2, 2)',
       importance: '@integer(1, 3)',
       'type|1': ['CN', 'US', 'JP', 'EU'],
-      'status|1': ['published', 'draft'],
+      'status|1': ['published', 'draft', 'publishing'],
       createTime: '@date(yyyy-MM-dd)',
       commentDisabled: true,
       pageViews: '@integer(300, 5000)'

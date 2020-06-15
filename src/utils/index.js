@@ -45,3 +45,19 @@ export function param2Obj(url) {
       '"}'
   )
 }
+
+export const dateFormatString = (timestamp, type = 0) => {
+  const date = new Date(timestamp)
+
+  if (type === 0) {
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`.replace(
+      /\b(\w)\b/g,
+      '0$1'
+    )
+  }
+
+  if (type === 1) {
+    return `${date.getFullYear()}-${date.getMonth() +
+      1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`.replace(/\b(\w)\b/g, '0$1')
+  }
+}
