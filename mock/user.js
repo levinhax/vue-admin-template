@@ -1,6 +1,7 @@
 import dashboardRouter from './routeModules/dashboardRouter'
 import blogRouter from './routeModules/blogRouter'
 import permissionRouter from './routeModules/permissionRouter'
+import tableRouter from './routeModules/tableRouter'
 
 const tokens = {
   admin: {
@@ -85,14 +86,14 @@ export default [
         return {
           code: 200,
           data: {
-            router: [dashboardRouter, blogRouter, permissionRouter]
+            router: [dashboardRouter, blogRouter, permissionRouter, tableRouter]
           }
         }
       } else if (config.body.userRole === 'user-token') {
         return {
           code: 200,
           data: {
-            router: [dashboardRouter, permissionRouter]
+            router: [dashboardRouter, permissionRouter, tableRouter]
           }
         }
       }

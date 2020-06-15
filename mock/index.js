@@ -3,8 +3,9 @@ import { param2Obj } from '../src/utils'
 
 import test from './test'
 import user from './user'
+import table from './table'
 
-const mocks = [...test, ...user]
+const mocks = [...test, ...user, ...table]
 
 // for front mock
 // please use it cautiously, it will redefine XMLHttpRequest,

@@ -22,8 +22,7 @@ export default {
 
 .app-main {
   /* 50 = navbar */
-  /* width: 100%; */
-  width: calc(100% - #{$sideBarWidth});
+  width: 100%;
   min-height: calc(100vh - 50px);
   box-sizing: border-box;
   padding: 20px 16px;
