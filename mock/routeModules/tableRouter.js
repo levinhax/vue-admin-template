@@ -23,6 +23,20 @@ const tableRouter = {
       redirect: '',
       hidden: false,
       children: null
+    },
+    {
+      id: '0302',
+      url: 'dynamic',
+      name: 'TableDynamic',
+      component: 'Table/dynamic',
+      description: null,
+      title: 'Dynamic Table',
+      icon: '',
+      parentId: '0300',
+      parentName: 'Table',
+      redirect: '',
+      hidden: false,
+      children: null
     }
   ]
 }

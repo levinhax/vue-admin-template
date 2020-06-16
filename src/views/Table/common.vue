@@ -77,7 +77,7 @@ export default {
                   type:
                     params.row.status === 'published'
                       ? 'success'
-                      : params.row.status === 'published'
+                      : params.row.status === 'publishing'
                       ? ''
                       : 'info'
                 } // 组件的props
