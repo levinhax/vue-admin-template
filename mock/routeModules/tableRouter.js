@@ -51,6 +51,20 @@ const tableRouter = {
       redirect: '',
       hidden: false,
       children: null
+    },
+    {
+      id: '0304',
+      url: 'drag',
+      name: 'TableDrag',
+      component: 'Table/drag',
+      description: null,
+      title: '拖拽表格',
+      icon: '',
+      parentId: '0300',
+      parentName: 'Table',
+      redirect: '',
+      hidden: false,
+      children: null
     }
   ]
 }

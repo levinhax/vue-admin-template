@@ -4,6 +4,7 @@ const TableCommon = () => import(/* webpackChunkName: "TableCommon" */ '../../vi
 const TableDynamic = () =>
   import(/* webpackChunkName: "TableDynamic" */ '../../views/Table/dynamic')
 const TableScroll = () => import(/* webpackChunkName: "TableScroll" */ '@/views/Table/scroll')
+const TableDrag = () => import(/* webpackChunkName: "TableDrag" */ '@/views/Table/drag')
 
 const tableRouter = {
   path: '/table',
@@ -29,6 +30,12 @@ const tableRouter = {
       name: 'TableScroll',
       component: TableScroll,
       meta: { title: 'Table Scroll' }
+    },
+    {
+      path: 'drag',
+      name: 'TableDrag',
+      component: TableDrag,
+      meta: { title: 'Table Drag' }
     }
   ]
 }
