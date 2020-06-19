@@ -3,6 +3,7 @@ import blogRouter from './routeModules/blogRouter'
 import permissionRouter from './routeModules/permissionRouter'
 import tableRouter from './routeModules/tableRouter'
 import formRouter from './routeModules/formRouter'
+import clipboardRouter from './routeModules/clipboardRouter'
 
 const tokens = {
   admin: {
@@ -87,14 +88,21 @@ export default [
         return {
           code: 200,
           data: {
-            router: [dashboardRouter, blogRouter, permissionRouter, tableRouter, formRouter]
+            router: [
+              dashboardRouter,
+              blogRouter,
+              permissionRouter,
+              tableRouter,
+              formRouter,
+              clipboardRouter
+            ]
           }
         }
       } else if (config.body.userRole === 'user-token') {
         return {
           code: 200,
           data: {
-            router: [dashboardRouter, permissionRouter, tableRouter, formRouter]
+            router: [dashboardRouter, permissionRouter, tableRouter, formRouter, clipboardRouter]
           }
         }
       }
