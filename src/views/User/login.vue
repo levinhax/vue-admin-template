@@ -81,8 +81,8 @@ export default {
       this.$refs.login.validate(valid => {
         if (valid) {
           const params = {
-            username: this.loginParams.username,
-            password: this.loginParams.password
+            userName: this.loginParams.username,
+            userPass: this.loginParams.password
           }
           login(params).then(res => {
             if (res.code === 200) {

@@ -4,6 +4,7 @@ import permissionRouter from './routeModules/permissionRouter'
 import tableRouter from './routeModules/tableRouter'
 import formRouter from './routeModules/formRouter'
 import clipboardRouter from './routeModules/clipboardRouter'
+import fileRouter from './routeModules/fileRouter'
 
 const tokens = {
   admin: {
@@ -39,9 +40,9 @@ export default [
     url: '/api/user/login',
     type: 'post',
     response: config => {
-      const { username } = config.body
-      console.log(username)
-      const token = tokens[username]
+      const { userName } = config.body
+      console.log(userName)
+      const token = tokens[userName]
       // mock error
       if (!token) {
         return {
@@ -94,7 +95,8 @@ export default [
               permissionRouter,
               tableRouter,
               formRouter,
-              clipboardRouter
+              clipboardRouter,
+              fileRouter
             ]
           }
         }
@@ -102,7 +104,14 @@ export default [
         return {
           code: 200,
           data: {
-            router: [dashboardRouter, permissionRouter, tableRouter, formRouter, clipboardRouter]
+            router: [
+              dashboardRouter,
+              permissionRouter,
+              tableRouter,
+              formRouter,
+              clipboardRouter,
+              fileRouter
+            ]
           }
         }
       }
