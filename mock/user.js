@@ -5,6 +5,7 @@ import tableRouter from './routeModules/tableRouter'
 import formRouter from './routeModules/formRouter'
 import clipboardRouter from './routeModules/clipboardRouter'
 import fileRouter from './routeModules/fileRouter'
+import videoRouter from './routeModules/videoRouter'
 
 const tokens = {
   admin: {
@@ -96,7 +97,8 @@ export default [
               tableRouter,
               formRouter,
               clipboardRouter,
-              fileRouter
+              fileRouter,
+              videoRouter
             ]
           }
         }
@@ -110,7 +112,8 @@ export default [
               tableRouter,
               formRouter,
               clipboardRouter,
-              fileRouter
+              fileRouter,
+              videoRouter
             ]
           }
         }

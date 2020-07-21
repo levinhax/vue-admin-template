@@ -61,6 +61,9 @@ npm run format
 - 表单
     - 公共表单组件
 - 复制粘贴
+- 文件上传
+- 视频
+    - RTMP(Video.js)
 
 ## 最后
 
