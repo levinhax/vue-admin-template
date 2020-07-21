@@ -3,6 +3,7 @@
     <div class="video-content">
       <video
         ref="videoPlayer"
+        id="myvideo"
         class="video-js vjs-default-skin vjs-big-play-centered"
         preload="auto"
         autoplay
@@ -34,6 +35,9 @@ export default {
       videoPlayer: ''
     }
   },
+  // created() {
+  //   this.initVideo()
+  // },
   mounted() {
     this.$nextTick(() => {
       this.initVideo()
@@ -44,7 +48,9 @@ export default {
   },
   methods: {
     initVideo() {
-      this.videoPlayer = this.$video(this.$refs.videoPlayer)
+      this.videoPlayer = this.$video('myvideo', {}, function() {
+        console.log('videojs播放器初始化成功')
+      })
       console.log('videoPlayer: ', this.videoPlayer)
       this.videoPlayer.src({
         src: this.videoSrc,
