@@ -23,31 +23,31 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    proxy: {
-      // '/api': {
-      //     target: '<url>',
-      //     ws: true,
-      //     changeOrigin: true   // 开启跨域反向代理
-      // },
-      // '/foo': {
-      //     target: '<other_url>'
-      // },
-      //   '/download': {
-      //     target: `http://swj-test.oss-cn-hangzhou.aliyuncs.com/`,
-      //     changeOrigin: true,
-      //     pathRewrite: {
-      //       '^/download': ''
-      //     }
-      //   },
-      [process.env.VUE_APP_BASE_API]: {
-        target: `http://localhost:5000/`,
-        changeOrigin: true,
-        pathRewrite: {
-          ['^' + process.env.VUE_APP_BASE_API]: '' // 前面加^配出来后就是http://base.hnabc.cn/api/xxx/xxx,不会出现随意规定的app字段
-        }
-      }
-    }
-    // before: require('./mock/mock-server.js')
+    // proxy: {
+    //   // '/api': {
+    //   //     target: '<url>',
+    //   //     ws: true,
+    //   //     changeOrigin: true   // 开启跨域反向代理
+    //   // },
+    //   // '/foo': {
+    //   //     target: '<other_url>'
+    //   // },
+    //   //   '/download': {
+    //   //     target: `http://swj-test.oss-cn-hangzhou.aliyuncs.com/`,
+    //   //     changeOrigin: true,
+    //   //     pathRewrite: {
+    //   //       '^/download': ''
+    //   //     }
+    //   //   },
+    //   [process.env.VUE_APP_BASE_API]: {
+    //     target: `http://localhost:5000/`,
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       ['^' + process.env.VUE_APP_BASE_API]: '' // 前面加^配出来后就是http://base.hnabc.cn/api/xxx/xxx,不会出现随意规定的app字段
+    //     }
+    //   }
+    // }
+    before: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
