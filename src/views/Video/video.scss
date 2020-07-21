@@ -1,0 +1,15 @@
+.video-wrapper {
+  .title {
+    text-align: center;
+  }
+
+  .video-list {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .info {
+    width: 720px;
+    margin: 20px auto 0;
+  }
+}

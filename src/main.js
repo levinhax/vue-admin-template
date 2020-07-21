@@ -22,6 +22,10 @@ import '@/permission' // permission control
 import { directive } from './directive'
 directive()
 
+import Video from 'video.js'
+import 'video.js/dist/video-js.css'
+Vue.prototype.$video = Video
+
 Vue.config.productionTip = false
 
 new Vue({
