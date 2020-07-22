@@ -37,6 +37,20 @@ const videoRouter = {
       redirect: '',
       hidden: false,
       children: null
+    },
+    {
+      id: '0703',
+      url: 'rtsp',
+      name: 'rtspVideo',
+      component: 'Video/rtsp',
+      description: null,
+      title: 'Rtsp流',
+      icon: '',
+      parentId: '0700',
+      parentName: 'Video',
+      redirect: '',
+      hidden: false,
+      children: null
     }
   ]
 }
