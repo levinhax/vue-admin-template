@@ -1,6 +1,7 @@
 /* Layout */
 import Layout from '@/layout'
 const rtmpVideo = () => import(/* webpackChunkName: "rtmpVideo" */ '@/views/Video/rtmp')
+const hlsVideo = () => import(/* webpackChunkName: "hlsVideo" */ '@/views/Video/hls')
 
 const videoRouter = {
   path: '/video',
@@ -14,6 +15,12 @@ const videoRouter = {
       name: 'rtmpVideo',
       component: rtmpVideo,
       meta: { title: 'rtmpVideo', icon: '' }
+    },
+    {
+      path: 'hts',
+      name: 'hlsVideo',
+      component: hlsVideo,
+      meta: { title: 'hlsVideo', icon: '' }
     }
   ]
 }

@@ -2,7 +2,7 @@
   <div class="video-wrapper">
     <h3 class="title">Rtmp流 (video.js)</h3>
     <div class="video-list">
-      <RtmpVideo />
+      <RtmpVideo :videoSrc="HNVideo.videoSrc" />
     </div>
     <div class="info">
       <h4>RTMP 视频流</h4>
@@ -31,7 +31,12 @@ export default {
     RtmpVideo
   },
   data() {
-    return {}
+    return {
+      // 湖南卫视
+      HNVideo: {
+        videoSrc: 'rtmp://58.200.131.2:1935/livetv/hunantv'
+      }
+    }
   },
   mounted() {},
   beforeDestroy() {},

@@ -1,5 +1,5 @@
 <template>
-  <div class="rtmp-video-wrapper">
+  <div class="hls-video-wrapper">
     <div class="video-content">
       <video
         ref="videoPlayer"
@@ -11,7 +11,7 @@
         style="width: 100%;height: 100%;"
         data-setup='{"html5" : { "nativeTextTracks" : false }}'
       >
-        <source :src="videoSrc" type="rtmp/flv" />
+        <source :src="videoSrc" type="application/x-mpegURL" />
       </video>
     </div>
   </div>
@@ -19,11 +19,11 @@
 
 <script>
 export default {
-  name: 'RtmpVideo',
+  name: 'HlsVideo',
   props: {
     videoSrc: {
       type: String,
-      default: 'rtmp://58.200.131.2:1935/livetv/hunantv'
+      default: 'http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8'
     },
     videoShow: {
       type: Boolean,
@@ -33,6 +33,11 @@ export default {
   data() {
     return {
       videoPlayer: ''
+    }
+  },
+  watch: {
+    videoSrc: function(val, oldVal) {
+      this.initVideo()
     }
   },
   mounted() {
@@ -51,7 +56,7 @@ export default {
       console.log('videoPlayer: ', this.videoPlayer)
       this.videoPlayer.src({
         src: this.videoSrc,
-        type: 'rtmp/flv'
+        type: 'application/x-mpegURL'
       })
       this.videoPlayer.play()
       //   this.videoPlayer.pause()
@@ -68,7 +73,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.rtmp-video-wrapper {
+.hls-video-wrapper {
   .video-content {
     width: 400px;
     height: 300px;

@@ -64,6 +64,7 @@ npm run format
 - 文件上传
 - 视频
     - RTMP(Video.js)
+    - HLS(Video.js)
 
 ## 最后
 

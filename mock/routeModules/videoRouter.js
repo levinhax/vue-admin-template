@@ -23,6 +23,20 @@ const videoRouter = {
       redirect: '',
       hidden: false,
       children: null
+    },
+    {
+      id: '0702',
+      url: 'hls',
+      name: 'hlsVideo',
+      component: 'Video/hls',
+      description: null,
+      title: 'Hls - VideoJs',
+      icon: '',
+      parentId: '0700',
+      parentName: 'Video',
+      redirect: '',
+      hidden: false,
+      children: null
     }
   ]
 }
